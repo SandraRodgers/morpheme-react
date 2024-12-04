@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Vite
+.vite
+.vite-temp
+
+# Log files
+*.log
+*.log.*
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Rollup
+rollup.config.js
+
+# Tailwind and PostCSS
+postcss.config.js
+tailwind.config.cjs
+
+# Coverage reports
+coverage/
+
+# Playground files
+playground/dist/
+playground/node_modules/
