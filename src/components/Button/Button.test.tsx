@@ -1,4 +1,3 @@
-
 import React from "react";
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -6,8 +5,8 @@ import Button from "./Button";
 
 describe("Button Component", () => {
   it("renders the button with the correct label", () => {
-    // Arrange: Render the Button component with a specific label
-    render(<Button label="Click Me" onClick={() => {}} />);
+    // Arrange: Render the Button component with specific children
+    render(<Button className="bg-red-500" onClick={() => {}}>Click Me</Button>);
 
     // Act & Assert: Ensure the button displays the correct label
     const buttonElement = screen.getByRole("button", { name: "Click Me" });
@@ -19,7 +18,7 @@ describe("Button Component", () => {
     const handleClick = jest.fn();
 
     // Render the Button component with the mock function
-    render(<Button label="Click Me" onClick={handleClick} />);
+    render(<Button className="bg-red-500" onClick={handleClick}>Click Me</Button>);
 
     // Act: Click the button
     const buttonElement = screen.getByRole("button", { name: "Click Me" });
@@ -31,7 +30,7 @@ describe("Button Component", () => {
 
   it("has the correct styles applied", () => {
     // Arrange: Render the Button component
-    render(<Button label="Styled Button" onClick={() => {}} />);
+    render(<Button className="bg-red-500" onClick={() => {}}>Styled Button</Button>);
 
     // Act: Get the button element
     const buttonElement = screen.getByRole("button", { name: "Styled Button" });
