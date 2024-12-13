@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these base styles */
+body {
+  @apply bg-background text-text min-h-screen;
+} 
