@@ -4,5 +4,5 @@
 
 /* Add these base styles */
 body {
-  @apply bg-background text-text min-h-screen;
+  @apply bg-background text-text min-h-screen flex flex-col;
 } 

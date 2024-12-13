@@ -1,7 +1,8 @@
 import React from 'react';
-import { FaMicrophone, FaRegStopCircle } from 'react-icons/fa'; // Add this import
+import { useTheme } from '../../context/ThemeContext';
+import { FaMicrophone, FaStop } from 'react-icons/fa'; // Add this import
 
-interface ButtonProps {
+interface MicrophoneButtonProps {
   onClick: () => void;
   className?: string;
   children?: React.ReactNode;
@@ -11,7 +12,7 @@ interface ButtonProps {
   isConnected?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const MicrophoneButton: React.FC<MicrophoneButtonProps> = ({
   onClick,
   className = '',
   children,
@@ -20,8 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   size = 'md',
   isConnected = false,
 }) => {
-  const baseStyles =
-    'flex items-center gap-2 rounded-sm font-medium transition-colors duration-fast';
+  const baseStyles = 'rounded-full';
 
   const variantStyles = {
     primary: `bg-primary text-background hover:bg-primary/90`,
@@ -31,12 +31,20 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const sizeStyles = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
+    sm: 'p-3 text-sm',
+    md: 'p-4 text-base',
+    lg: 'p-6 text-lg',
   };
 
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
+
+  const iconSizes = {
+    sm: 14,
+    md: 16,
+    lg: 24,
+  };
+
+  const pulseAnimation = 'animate-pulse';
 
   return (
     <button
@@ -51,13 +59,16 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
     >
       {isConnected !== undefined && (
-        <span className="text-current">
-          {isConnected ? <FaRegStopCircle size={16} /> : <FaMicrophone size={16} />}
+        <span className={`text-current ${isConnected ? pulseAnimation : ''}`}>
+          {isConnected ? (
+            <FaStop size={iconSizes[size]} />
+          ) : (
+            <FaMicrophone size={iconSizes[size]} />
+          )}
         </span>
       )}
-      {children}
     </button>
   );
 };
 
-export default Button;
+export default MicrophoneButton;
