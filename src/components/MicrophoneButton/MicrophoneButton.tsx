@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import { FaMicrophone, FaStop } from 'react-icons/fa'; // Add this import
+import { FaMicrophone, FaStop } from 'react-icons/fa';
 
 interface MicrophoneButtonProps {
   onClick: () => void;

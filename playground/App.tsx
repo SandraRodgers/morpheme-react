@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '../src/components/Button/Button';
 import MicrophoneButton from '../src/components/MicrophoneButton/MicrophoneButton';
 import useDeepgramAgent from '../src/hooks/useDeepgramAgent';
+import WaveformVisualizer from '../src/components/Waveform/Waveform';
 import './index.css';
-import { useTheme } from '../src/context/ThemeContext';
 
 const token = import.meta.env.VITE_DEEPGRAM_TOKEN;
 const config = {
@@ -47,16 +47,8 @@ const config = {
 };
 
 const App: React.FC = () => {
-  const { theme, setTheme } = useTheme();
-  const {
-    isRecording,
-    isConnected,
-    toggleRecording,
-    connect,
-    disconnect,
-    pausePlayback,
-    resumePlayback,
-  } = useDeepgramAgent(config, token);
+  const { isRecording, isConnected, toggleRecording, connect, disconnect, audioPlayer } =
+    useDeepgramAgent(config, token);
 
   const [isPrimaryConnected, setIsPrimaryConnected] = React.useState(false);
   const [isMicrophoneConnected, setIsMicrophoneConnected] = React.useState(false);
@@ -99,6 +91,7 @@ const App: React.FC = () => {
         >
           {isPrimaryConnected ? 'Disconnect' : 'Connect'}
         </Button>
+        <WaveformVisualizer audioPlayer={audioPlayer} isRecording={isRecording} color="#7C3AED" />
       </div>
       <div className="p-4">
         <MicrophoneButton
