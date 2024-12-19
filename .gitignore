@@ -33,10 +33,6 @@ Thumbs.db
 # Rollup
 rollup.config.js
 
-# Tailwind and PostCSS
-postcss.config.js
-tailwind.config.cjs
-
 # Coverage reports
 coverage/
 

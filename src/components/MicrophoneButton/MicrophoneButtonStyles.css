@@ -1,0 +1,61 @@
+.microphone-button {
+  align-items: center;
+  background-color: #13ef93;
+  border: none;
+  border-radius: 9999px;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 1;
+  font-size: 1rem;
+}
+
+/* Dynamic sizes based on font-size */
+.microphone-button-sm {
+  font-size: 0.75rem;
+  padding: 7px;
+}
+
+.microphone-button-md {
+  font-size: 1rem;
+  padding: 11px;
+}
+
+.microphone-button-lg {
+  font-size: 1.5rem;
+  padding: 16px;
+}
+
+.microphone-button-xl {
+  font-size: 1.75rem;
+  padding: 22px;
+}
+
+/* Disabled styles */
+.microphone-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.microphone-button.span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 1s infinite;
+}

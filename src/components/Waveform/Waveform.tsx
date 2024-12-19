@@ -81,17 +81,20 @@ const WaveformVisualizer: React.FC<WaveformVisualizerProps> = ({
         style={{ position: 'absolute', top: 0, left: 0 }}
       />
 
-      <hr
+      {/* <hr
         style={{
           width: 600,
-          height: 200,
-          borderTop: `1px solid ${color || '#000000'}`,
+          height: 0,
+          borderTop: `3px solid ${color || '#000000'}`,
+          borderBottom: `0px solid ${color || '#000000'}`,
+          borderLeft: `0px solid ${color || '#000000'}`,
+          borderRight: `0px solid ${color || '#000000'}`,
           position: 'absolute',
-          top: 100,
+          top: 90,
           left: 0,
           zIndex: 1,
         }}
-      />
+      /> */}
     </div>
   );
 };

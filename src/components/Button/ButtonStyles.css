@@ -1,0 +1,61 @@
+.default-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.125rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: black;
+  background-color: #13ef93;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.default-button-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.default-button-icon-sm svg {
+  height: 11px;
+  width: 11px;
+}
+
+.default-button-md {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.default-button-icon-md svg {
+  height: 16px;
+  width: 16px;
+}
+
+.default-button-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+}
+
+.default-button-icon-lg svg {
+  height: 22px;
+  width: 22px;
+}
+
+.mic-icon {
+  height: 22px;
+  width: 22px;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.default-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
