@@ -8,6 +8,7 @@ const useDeepgramAgent = (
 ) => {
   const [isRecording, setIsRecording] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
+  const [messages, setMessages] = useState<any[]>([]);
   const wsRef = useRef<WebSocket | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const microphoneRef = useRef<MediaStreamAudioSourceNode | null>(null);
@@ -71,7 +72,10 @@ const useDeepgramAgent = (
         const arrayBuffer = await event.data.arrayBuffer();
         audioPlayerRef.current?.play(arrayBuffer);
       } else {
+        const message = JSON.parse(event.data);
         console.log(`Received message: ${event.data}`);
+
+        setMessages((prevMessages) => [...prevMessages, message]);
       }
     };
 
@@ -86,6 +90,11 @@ const useDeepgramAgent = (
     // Initialize AudioPlayer
     audioPlayerRef.current = new AudioPlayer(config.audio.output.sample_rate);
   }, [config, token]);
+
+  /**
+   * Returns messages of a specific type.
+   */
+  const getMessagesByType = (type: string) => messages.filter((message) => message.type === type);
 
   /**
    * Disconnects from the WebSocket server and stops recording.
@@ -121,6 +130,8 @@ const useDeepgramAgent = (
     pausePlayback: () => audioPlayerRef.current?.stop(),
     resumePlayback: () => audioPlayerRef.current?.resume(),
     audioPlayer: audioPlayerRef, // Expose audioPlayerRef for direct access
+    getMessagesByType,
+    messages,
   };
 };
 

@@ -6,6 +6,8 @@ import DotVisualizer from '../src/components/DotVisualizer/DotVisualizer';
 import AudioPlayer from '../src/components/AudioPlayer/AudioPlayer';
 import WaveCanvas from '../src/components/WaveCanvas/WaveCanvas';
 import SimplePlayer from '../src/components/SimplePlayer/SimplePlayer';
+import Conversation from '../src/components/Conversation/Conversation';
+import WaveformVisualizer from '../src/components/Waveform/Waveform';
 import './index.css';
 
 const token = import.meta.env.VITE_DEEPGRAM_TOKEN;
@@ -50,7 +52,7 @@ const config = {
 };
 
 const App: React.FC = () => {
-  const { isRecording, isConnected, toggleRecording, connect, disconnect, audioPlayer } =
+  const { isRecording, isConnected, toggleRecording, connect, disconnect, audioPlayer, messages } =
     useDeepgramAgent(config, token);
 
   const [isPrimaryConnected, setIsPrimaryConnected] = React.useState(false);
@@ -73,6 +75,12 @@ const App: React.FC = () => {
       setIsPrimaryConnected(true);
       primaryAudioPlayerRef.current = audioPlayer.current;
     }
+  };
+
+  const [isConversationOpen, setIsConversationOpen] = React.useState(true);
+
+  const handleConversationClick = () => {
+    setIsConversationOpen(false);
   };
 
   const handleMicrophoneButtonClick = async () => {
@@ -176,9 +184,24 @@ const App: React.FC = () => {
           isRecording={isMicrophoneConnected}
           numDots={30} // Increase the number of dots
           baseRadius={3} // Set the base dot size
-          growthFactor={35} // Set how much the dots grow with audio
+          growthFactor={55} // Set how much the dots grow with audio
           color="#7C3AED" // Custom color
           showBeforeStart={true}
+        />
+      </div>
+      <div
+        style={{
+          width: '50vw',
+          height: '20vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <WaveformVisualizer
+          audioPlayer={microphoneAudioPlayerRef}
+          isRecording={isMicrophoneConnected}
+          color="#79affa"
         />
       </div>
 
@@ -195,6 +218,18 @@ const App: React.FC = () => {
           scale={2.5}
         />
       </div>
+      <h2>Transcribers</h2>
+      {isConversationOpen && (
+        <div style={{ width: '40vw', height: '300px' }}>
+          <Conversation
+            messages={messages}
+            onClose={() => {
+              setIsConversationOpen(false);
+            }}
+            showCloseButton={true}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import WaveCanvas from '../WaveCanvas/WaveCanvas';
 import MicrophoneButton from '../MicrophoneButton/MicrophoneButton';
+import './SimplePlayerStyles.css';
 
 interface SimplePlayerProps {
   onClick: () => void;
@@ -17,8 +18,6 @@ interface SimplePlayerProps {
   micIconColor: string;
   micButtonColor: string;
   waveCanvasColor: string;
-  width?: number;
-  height?: number;
   scale: number;
 }
 
@@ -32,23 +31,11 @@ const SimplePlayer: React.FC<SimplePlayerProps> = ({
   micIconColor,
   micButtonColor,
   waveCanvasColor,
-  height = 80, // Default height
   scale,
 }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        height: `${height}px`, // Set the height dynamically
-        width: '100%', // Allow full width
-        maxWidth: '800px', // Optional: limit the max width
-        backgroundColor: '#1A1A1F',
-        borderRadius: '12px',
-        border: '1px solid #2C2C33',
-      }}
-    >
-      <div style={{ padding: '16px' }}>
+    <div className="simple-player-container">
+      <div className="simple-player-button-container">
         <MicrophoneButton
           size="lg"
           onClick={onClick}
@@ -56,7 +43,7 @@ const SimplePlayer: React.FC<SimplePlayerProps> = ({
           style={{ backgroundColor: micButtonColor, color: micIconColor }}
         />
       </div>
-      <div style={{ flex: 1, height: '100%', padding: '16px' }}>
+      <div className="simple-player-wave-container">
         <WaveCanvas
           audioPlayer={audioPlayer}
           isPlaying={isPlaying}

@@ -39,7 +39,7 @@
   cursor: not-allowed;
 }
 
-.microphone-button.span {
+.microphone-button span {
   display: flex;
   justify-content: center;
   align-items: center;

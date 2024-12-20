@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
+import './WaveCanvasStyles.css';
 
 interface WaveCanvasProps {
   audioPlayer: React.MutableRefObject<AudioPlayer | null>;
@@ -104,16 +105,12 @@ const WaveCanvas: React.FC<WaveCanvasProps> = ({
   }, [isPlaying, audioPlayer, barWidth, gap, calculatedHeight, calculatedWidth, color, scale]);
 
   return (
-    <div ref={parentRef} style={{ width: '100%', height: '100%' }}>
+    <div ref={parentRef} className="wave-canvas-container">
       <canvas
         ref={canvasRef}
         width={calculatedWidth}
         height={calculatedHeight}
-        style={{
-          display: 'block',
-          width: '100%',
-          height: '100%',
-        }}
+        className="wave-canvas"
       />
     </div>
   );

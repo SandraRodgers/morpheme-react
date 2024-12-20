@@ -30,7 +30,7 @@ export default class AudioPlayer {
 
   /**
    * Plays the provided audio data.
-   * @param {ArrayBuffer} audioData - The audio data to be played.
+   * @param {ArrayBuffer} audioData
    */
   async play(audioData: ArrayBuffer) {
     const audioBuffer = createAudioBuffer(this.audioContext, audioData);
