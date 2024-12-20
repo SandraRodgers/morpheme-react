@@ -1,10 +1,10 @@
 # Morpheme React Component Library
 
-**Morpheme React** is a specialized component library for building voice agent applications using Deepgram's Voice API. It provides a suite of React components and hooks designed specifically for voice interaction interfaces.
+**Morpheme React** is a specialized component library for building voice agent applications using Deepgram's Voice Agent API. It provides a suite of React components and hooks designed specifically for voice interaction interfaces.
 
 ## Features
 
-- **Voice Agent Integration**: Seamless integration with Deepgram's Voice API
+- **Voice Agent Integration**: Seamless integration with Deepgram's Voice Agent API
 - **Audio Visualization**: Multiple components for visualizing audio input/output
 - **TypeScript Support**: Fully typed for improved development experience
 - **Customizable Styling**: CSS-based styling with easy overrides
@@ -46,32 +46,6 @@ const config = {
       },
       model: 'gpt-4', // LLM model to use
       instructions: 'You are a helpful voice assistant...', // LLM System prompt
-      functions: [
-        // Optional: Function calling configuration
-        {
-          name: 'check_weather',
-          description: 'Get the current weather for a location',
-          url: 'https://api.example.com/weather',
-          headers: [
-            // Optional: HTTP headers
-            {
-              key: 'authorization',
-              value: 'Bearer token123',
-            },
-          ],
-          method: 'post',
-          parameters: {
-            type: 'object',
-            properties: {
-              location: {
-                type: 'string',
-                description: "The city and state, e.g., 'San Francisco, CA'",
-              },
-            },
-            required: ['location'],
-          },
-        },
-      ],
     },
     // Add other Deepgram configuration options as needed
   },
@@ -84,6 +58,8 @@ function MyVoiceApp() {
   // Your app logic here
 }
 ```
+
+See Deepgram's [Voice Agent Settings Configuration](https://developers.deepgram.com/docs/voice-agent-settings-configuration) for more information.
 
 ## Components
 
